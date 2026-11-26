@@ -1,21 +1,16 @@
+import { Circle } from 'lucide-react';
 import ScrollReveal from '../ui/ScrollReveal';
 
 export default function Now() {
   return (
-    <section id="now" className="py-24 px-6">
-      <div className="max-w-2xl mx-auto text-center">
-        <div className="flex items-center justify-center gap-2 mb-8 border-b border-slate-800/50 pb-4">
-          <span className="text-indigo-500 font-mono text-xs uppercase tracking-widest">now</span>
-          <h2 className="text-3xl font-bold">Currently</h2>
-        </div>
-
-        <ScrollReveal className="space-y-6">
-          <p className="text-lg text-slate-400 leading-relaxed">
-            Learning C++ memory tooling, building small game prototypes, and reading about cybersecurity for legal contexts.
-          </p>
-          <p className="text-lg text-slate-400 leading-relaxed">
-            Open to internships and junior roles where I can write code that actually matters.
-          </p>
+    <section id="now" className="section">
+      <div className="section-inner">
+        <div className="section-head"><span className="section-kicker">06 / Current status</span><h2>What I&apos;m focused on now.</h2></div>
+        <ScrollReveal>
+          <div className="now-layout">
+            <p>Studying computer science, improving my C++ and Python foundations, building small projects, and learning cybersecurity fundamentals. I&apos;m open to internship opportunities where I can contribute, learn from experienced engineers, and build responsibly.</p>
+            <span className="now-status"><Circle size={9} fill="currentColor" /> OPEN TO INTERNSHIPS</span>
+          </div>
         </ScrollReveal>
       </div>
     </section>

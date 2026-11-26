@@ -1,37 +1,22 @@
 import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 
-export default function ScrollReveal({ children, className = '', delay = 0 }) {
+export default function ScrollReveal({ children, className = '' }) {
   const ref = useRef(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const element = ref.current;
+    if (!element) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.15 }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        element.classList.add('is-visible');
+        observer.unobserve(element);
+      }
+    }, { threshold: 0.12 });
 
-    observer.observe(el);
+    observer.observe(element);
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
 }
